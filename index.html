@@ -25,37 +25,31 @@ function myMap() {
 			}		
   };
 var map = new google.maps.Map(mapCanvas, mapOptions);
-   
+var img = {
+		url: "marker1.png",
+		scaledSize: new google.maps.Size(40, 64)
+	}
+var mark = {
+		url: "mark.png",
+		scaledSize: new google.maps.Size(32, 32)
+}
 //MAIN marker
   var marker = new google.maps.Marker({
 	position: myCenter,
 	map: map,
 	title: 'marker',
-	icon: {
-		url: "marker1.png",
-		scaledSize: new google.maps.Size(40, 64)
-	}
+	icon: img
 	
 });
 
-var InfoWindow = new google.maps.InfoWindow({
-		content: '<h1>Centras</h1>'
-});
-marker.addListener('click', function (){
-		InfoWindow.open(map, marker);
-});
-	
 //ADD A MARK
 function addMarker(props){
 		var marker = new google.maps.Marker({
 		position:props.coords,
 		map:map,
-		
+		icon: mark
 });
-	if(props.iconImage){
-		marker.setIcon(props.iconImage)
-	}
-	if(props.content){
+if(props.content){
 		var infoWindow = new google.maps.InfoWindow({
 			content: '<input type="text"></input>'
 		});
@@ -67,7 +61,8 @@ function addMarker(props){
 }
 //CLICK TO ADD A MARK
   google.maps.event.addListener(map, 'click', function(event){
-	addMarker({coords:event.latLng,content: '<input type="text"></input>'});
+	addMarker({coords:event.latLng,content: '<input type="text"></input>' , icon: mark
+	});
   });
 marker.setMap(map);
 }
