@@ -1,14 +1,9 @@
 <html>
 <head>
 <title>octopuslighthouse</title>
-<link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
 </head>
 <body>
-
-
 <div id="map" class="right" style="width:100%;height:100%"></div>
-
 <script>
 // Initialize google maps
 function myMap() {
@@ -25,6 +20,7 @@ function myMap() {
 			}		
   };
 var map = new google.maps.Map(mapCanvas, mapOptions);
+//images
 var img = {
 		url: "marker1.png",
 		scaledSize: new google.maps.Size(40, 64)
@@ -41,7 +37,6 @@ var mark = {
 	icon: img
 	
 });
-
 //ADD A MARK
 function addMarker(props){
 		var marker = new google.maps.Marker({
@@ -49,7 +44,10 @@ function addMarker(props){
 		map:map,
 		icon: mark
 });
-if(props.content){
+	if(props.iconImage){
+          marker.setIcon(props.icon);
+        }
+	if(props.content){
 		var infoWindow = new google.maps.InfoWindow({
 			content: '<input type="text"></input>'
 		});
