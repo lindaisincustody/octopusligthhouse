@@ -1,7 +1,45 @@
 <html>
 <head>
+<title>octopuslighthouse</title>
+<link href="http://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>octopuslighthouse</h1>
+
+
+<div id="map" class="right" style="width:100%;height:100%"></div>
+
+ <script>
+ //new marker
+
+// Initialize google maps
+function myMap() {
+  var myCenter = new google.maps.LatLng(54.687156,25.279651); //latitude&longitude
+  var mapCanvas = document.getElementById("map");
+  var mapOptions = {
+			//map positioning
+			center: myCenter,
+			zoom: 17,
+			//dropdown map style
+			mapTypeControlOptions:	{
+				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+				position: google.maps.ControlPosition.TOP_CENTER
+			}		
+  };
+  var map = new google.maps.Map(mapCanvas, mapOptions);
+  //marker
+  var marker = new google.maps.Marker({
+	position: myCenter,
+	map: map,
+	title: 'marker',
+	icon: {
+		url: "images/marker1.png",
+		scaledSize: new google.maps.Size(40, 64)
+	}
+});
+  marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPo8CC7kvy1TiHeUla5DaTDdhzoVZxRTw&callback=myMap"></script>	
 </body>
 </html>
